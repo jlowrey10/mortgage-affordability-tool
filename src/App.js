@@ -139,11 +139,7 @@ Keep it under 250 words. Sound like a knowledgeable friend, not a bank disclosur
       const response = await fetch("https://eokq37tw9hi33ry.m.pipedream.net", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-6",
-          max_tokens: 1024,
-          messages: [{ role: "user", content: prompt }],
-        }),
+        body: JSON.stringify({ prompt: prompt }),
       });
       const data = await response.json();
       const text = data.content?.[0]?.text || data.error?.message || "Unable to generate analysis.";
