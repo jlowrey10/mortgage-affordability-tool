@@ -136,13 +136,18 @@ Write 3-4 short paragraphs. Tell them:
 Keep it under 250 words. Sound like a knowledgeable friend, not a bank disclosure. Lubbock context where relevant.`;
 
     try {
-      const response = await fetch("https://eokq37tw9hi33ry.m.pipedream.net", {
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: prompt }),
+        body: JSON.stringify({
+          model: "claude-sonnet-4-6",
+          max_tokens: 1024,
+          messages: [{ role: "user", content: prompt }],
+        }),
       });
       const data = await response.json();
-      setAiResponse(data.result || "Unable to generate analysis.");
+      const text = data.content?.[0]?.text || data.error?.message || "Unable to generate analysis.";
+      setAiResponse(text);
     } catch (e) {
       setAiResponse("Connection error: " + e.message);
     }
