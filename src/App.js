@@ -142,7 +142,7 @@ Keep it under 250 words. Sound like a knowledgeable friend, not a bank disclosur
         body: JSON.stringify({ prompt: prompt }),
       });
       const data = await response.json();
-      const text = data.content?.[0]?.text || data.error?.message || "Unable to generate analysis.";
+      const text = data.result || data.content?.[0]?.text || "Unable to generate analysis.";
       setAiResponse(text);
     } catch (e) {
       setAiResponse("Connection error: " + e.message);
