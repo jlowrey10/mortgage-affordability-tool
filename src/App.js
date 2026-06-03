@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const RATE = 7.25; // current realistic 30yr fixed rate
-const TAX_RATE = 0.0185; // Lubbock county ~1.85%
+const RATE = 6.53; // Freddie Mac weekly avg as of May 28, 2026
+const TAX_RATE = 0.022; // Lubbock county ~2.2%
 const INSURANCE_RATE = 0.0065; // homeowners insurance estimate
 const PMI_RATE = 0.0085; // PMI if <20% down
 
